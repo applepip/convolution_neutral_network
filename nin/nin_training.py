@@ -40,3 +40,7 @@ trainer = gluon.Trainer(net.collect_params(), 'sgd', {'learning_rate': lr})
 train_iter, test_iter = load_data_fashion_mnist(batch_size, resize=224)
 train_ch5(net, train_iter, test_iter, batch_size, trainer, ctx,
               num_epochs)
+
+# NiN重复使用由卷积层和代替全连接层的 1×1 卷积层构成的NiN块来构建深层网络。
+# NiN去除了容易造成过拟合的全连接输出层，而是将其替换成输出通道数等于标签类别数的NiN块和全局平均池化层。
+# NiN的以上设计思想影响了后面一系列卷积神经网络的设计。
